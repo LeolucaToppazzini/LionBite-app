@@ -32,4 +32,6 @@ public class UserDao {
     public  void  close(){
         entityManager.close();
     }
+
+
 }

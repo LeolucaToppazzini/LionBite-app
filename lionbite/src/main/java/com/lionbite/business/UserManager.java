@@ -8,9 +8,12 @@ public class UserManager {
         UserDao dao = new UserDao();
         User user  = dao.get(id);
         dao.close();
-
         return  user;
     }
+
+
+
+
 
     public static Long save(User user){
         UserDao dao = new UserDao();

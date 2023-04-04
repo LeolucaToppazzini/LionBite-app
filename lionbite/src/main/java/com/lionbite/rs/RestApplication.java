@@ -1,8 +1,7 @@
 package com.lionbite.rs;
 
-
-
 import com.lionbite.dao.UtilityDao;
+import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -12,19 +11,33 @@ import java.util.Set;
 @ApplicationPath("/api")
 public class RestApplication extends Application {
 
-    @Override
-    public Set<Class<?>> getClasses() {
-        Set<Class<?>> classi = new HashSet<>();
-        classi.add(UserResource.class);
+    private Set<Object> singletons = new HashSet<Object>();
+    private HashSet<Class<?>> classes = new HashSet<Class<?>>();
+
+    public RestApplication()
+    {
+       /* CorsFilter corsFilter = new CorsFilter();
+        corsFilter.getAllowedOrigins().add("*");
+        corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
+        singletons.add(corsFilter);*/
+
+        classes.add(UserResource.class);
 
         // @Provider
-        classi.add(GenericExceptionMapper.class);
-        classi.add(JacksonConfiguration.class);
+        classes.add(GenericExceptionMapper.class);
+        classes.add(JacksonConfiguration.class);
+        classes.add(HeadersFilter.class);
 
-        //metto qua la parte di inizializzazione di JPA perchè rest application parte all'inizio e ci va bene che
-        //utility dao parta all'inizio anche lui
         UtilityDao.init();
-
-        return classi;
+    }
+    /*
+    @Override
+    public Set<Object> getSingletons() {
+        return singletons;
+    }
+*/
+    @Override
+    public HashSet<Class<?>> getClasses(){
+        return classes;
     }
 }
