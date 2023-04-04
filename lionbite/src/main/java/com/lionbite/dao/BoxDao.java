@@ -10,7 +10,7 @@ public class BoxDao {
     private EntityManager entityManager;
 
     public List<LionBox> getAll() {
-        String query = "select c from " + LionBox.class + " c order by c.prezzo";
+        String query = "select c from com.lionbite.model.LionBox c order by c.prezzo";
         return entityManager.createQuery(query, LionBox.class).getResultList();
     }
 

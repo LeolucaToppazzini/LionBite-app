@@ -22,6 +22,7 @@ public class RestApplication extends Application {
         singletons.add(corsFilter);*/
 
         classes.add(UserResource.class);
+        classes.add(LionBoxResource.class);
 
         // @Provider
         classes.add(GenericExceptionMapper.class);
