@@ -11,7 +11,7 @@ import java.util.Set;
 @ApplicationPath("/api")
 public class RestApplication extends Application {
 
-    private Set<Object> singletons = new HashSet<Object>();
+    //private Set<Object> singletons = new HashSet<Object>();
     private HashSet<Class<?>> classes = new HashSet<Class<?>>();
 
     public RestApplication()

@@ -12,9 +12,6 @@ public class UserManager {
     }
 
 
-
-
-
     public static Long save(User user){
         UserDao dao = new UserDao();
         dao.save(user);
